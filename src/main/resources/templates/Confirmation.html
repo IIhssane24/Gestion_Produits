@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="layout.html">
+<head>
+<meta charset="UTF-8"/>
+<title>Ajouter Produit</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" 
+	th:href="@{css/bootstrap.css}"/>
+</head>
+<body>
+<br/>
+	<div class="container"  layout:fragment="content" >
+		<div class="card">
+		  <div class="card-header">
+		    Confirmation
+		  </div>
+		  <div class="card-body">
+		  	
+		  		<div class="form-group">
+		  		 	<label>ID</label>
+		  		 	<label th:text="${produit.id}"></label>
+		  		</div>
+		  			<div class="form-group">
+		  		 	<label>Des</label>
+		  		 	<label th:text="${produit.des}"></label>
+		  		</div>
+		  			<div class="form-group">
+		  		 	<label>Prix</label>
+		  		 	<label th:text="${produit.prix}"></label>
+		  		</div>
+		  			<div class="form-group">
+		  		 	<label>Quantite</label>
+		  		 	<label th:text="${produit.quantite}"></label>
+		  		</div>
+		  		<br/>
+		  		
+		 
+		   </div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="layout.html">
+<head>
+<meta charset="UTF-8"/>
+<title>Produits</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" 
+	th:href="@{css/bootstrap.css}"/>
+</head>
+<body>
+<br/>
+<div layout:fragment="content" class="container">
+<div class="container"  >
+	<form th:action="@{/index}" method="get">
+		<label>Mot Cle:</label>
+		<input type="text" name="mc" th:value="${mc}"/>
+		<button class="btn btn-primary">Chercher</button>
+	</form>
+
+</div>
+
+<div class="container">
+	<h3>List des Produits</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Des</th>
+				<th>Prix</th>
+				<th>Quantite</th>
+			</tr>
+		</thead>
+		<tbody>
+		<!-- pour dire qu'il doit chercher dans model en fait ${nomquionafiatdanslemodele}-->
+			<tr th:each="p:${listProduits}">
+				<td th:text="${p.id}"></td>
+				<td th:text="${p.des}"></td>
+				<td th:text="${p.prix}"></td>
+				<td th:text="${p.quantite}"></td>
+				<td><a th:href="@{edit(id=${p.id})}">Edit</a></td>
+				<td><a onclick="return confirm('Etes vous sure?')" th:href="@{delete(id=${p.id},page=${pageCourante},size=${size},mc=${mc})}">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="container">
+ <ul class="nav nav-pills">
+ 	<li th:each="pa,status:${pages}">
+ 		<a th:class="${pageCourante}==${status.index}? 'nav-link active':'nav-link'"  th:href="@{/index(page=${status.index},size=${size},mc=${mc})}" th:text="${status.index}"></a>
+ 	</li>
+ </ul>
+</div>
+</div>
+</body>
+</html>
